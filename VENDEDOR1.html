@@ -7,7 +7,12 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 20px;
+      margin: 0; /* Quitamos el margen para un layout más ajustado */
+      padding: 20px; /* Agregamos padding al body para separación del borde */
+      position: relative; /* Añadido para que la posición absoluta funcione correctamente */
+    }
+    h1 {
+      margin-top: 0; /* Quitamos el margen superior del h1 para ajustarlo al padding del body */
     }
     table {
       width: 100%;
@@ -27,10 +32,30 @@
     tr:nth-child(even) {
       background-color: #f9f9f9;
     }
+    .back-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    .back-button a {
+      display: inline-block;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 50%;
+      transition: background-color 0.3s ease;
+    }
+    .back-button a:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
 <body>
   <h1>Datos de Google Sheets</h1>
+  <div class="back-button">
+    <a href="VentanaClientes.html">&larr;</a>
+  </div>
   <table id="data">
     <thead></thead>
     <tbody></tbody>
@@ -89,6 +114,12 @@
         tbody.appendChild(row);
       }
     }
+
+    fetchData();
+  </script>
+</body>
+</html>
+
 
     fetchData();
   </script>
