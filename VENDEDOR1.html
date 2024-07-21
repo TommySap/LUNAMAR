@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datos de Google Sheets</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <h1>Datos de Google Sheets</h1>
+  <table id="data">
+    <thead></thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    async function fetchData() {
+      try {
+        const response = await fetch('https://script.google.com/macros/s/AKfycbzShdBqU0kOM0siFT4BTIVy0vrdryoaZXd9U7eBsQTRk5ENMbQ11ED9Loq6-mrF7KpFFw/exec');
+        if (!response.ok) {
+          throw new Error(`Error HTTP: ${response.status}`);
+        }
+        const data = await response.json();
+        displayData(data);
+      } catch (error) {
+        console.error('Error al obtener los datos:', error);
+      }
+    }
+
+    function displayData(data) {
+      const thead = document.querySelector('#data thead');
+      const tbody = document.querySelector('#data tbody');
+
+      // Clear existing content
+      thead.innerHTML = '';
+      tbody.innerHTML = '';
+
+      if (data.length > 0) {
+        // Create table headers
+        const headers = Object.keys(data[0]);
+        const headerRow = document.createElement('tr');
+        headers.forEach(header => {
+          const th = document.createElement('th');
+          th.textContent = header;
+          headerRow.appendChild(th);
+        });
+        thead.appendChild(headerRow);
+
+        // Create table rows
+        data.forEach(item => {
+          const row = document.createElement('tr');
+          headers.forEach(header => {
+            const td = document.createElement('td');
+            td.textContent = item[header] || ''; // Handle empty values
+            row.appendChild(td);
+          });
+          tbody.appendChild(row);
+        });
+      } else {
+        // Handle empty data
+        const row = document.createElement('tr');
+        const td = document.createElement('td');
+        td.colSpan = '100%'; // Full width for empty message
+        td.textContent = 'No hay datos disponibles';
+        row.appendChild(td);
+        tbody.appendChild(row);
+      }
+    }
+
+    fetchData();
+  </script>
+</body>
+</html>
