@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MERCADOS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+    }
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .button-container a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .button-container a:hover {
+      background-color: #0056b3;
+    }
+    .back-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    .back-button a {
+      display: inline-block;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 50%;
+      transition: background-color 0.3s ease;
+    }
+    .back-button a:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="back-button">
+      <a href="VentanaRutas.html">&larr;</a>
+    </div>
+    <h1>MERCADOS</h1>
+    <div class="button-container">
+      <a href="VentanaClientes.html">MERCADO 1</a>
+    </div>
+
+    <div class="button-container">
+        <a href="VentanaClientes.html">MERCADO 2</a>
+    </div>
+
+    <div class="button-container">
+        <a href="VentanaClientes.html">MERCADO 3</a>
+    </div>
+  </div>
+</body>
+</html>
+
