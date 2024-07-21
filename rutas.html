@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RUTAS</title>
+    <style>
+        body {
+            position: relative;
+        }
+
+        .btn-regresar {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .btn-regresar:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>RUTAS</h1>
+    <button onclick="mostrarMercados()">RUTA 1</button>
+
+    <script>
+        function mostrarMercados() {
+            // Guardar el estado actual de la página antes de cambiar
+            sessionStorage.setItem('paginaAnterior', document.body.innerHTML);
+
+            // Cambiar el título de la página
+            document.title = "MERCADOS";
+
+            // Cambiar el contenido del cuerpo de la página
+            document.body.innerHTML = `
+                <h1>MERCADOS</h1>
+                <button onclick="alert('MERCADO 1')">MERCADO 1</button>
+                <button class="btn-regresar" onclick="regresarARutas()">&#8592;</button>
+            `;
+        }
+
+        function regresarARutas() {
+            // Recuperar el contenido de la página anterior desde el sessionStorage
+            var paginaAnterior = sessionStorage.getItem('paginaAnterior');
+
+            // Restaurar el contenido de la página anterior
+            if (paginaAnterior) {
+                document.body.innerHTML = paginaAnterior;
+            }
+
+            // Restaurar el título de la página anterior
+            document.title = "RUTAS";
+        }
+    </script>
+</body>
+</html>
