@@ -5,7 +5,7 @@ body {
     background: linear-gradient(120deg, #6C3483, #58D68D);
     height: 100vh;
 }
- 
+
 .formulario {
     position: absolute;
     top: 50%;
@@ -56,7 +56,7 @@ body {
     transition: .3s;
 }
 
-.username input:valid ~ label,
+.username input:not(:placeholder-shown) ~ label,
 .username input:focus ~ label {
     top: -12px;
     color: #6C3483;
@@ -118,4 +118,9 @@ input[type="submit"]:hover {
 
 .registrarse a:hover {
     text-decoration: underline;
+}
+
+.username label.active {
+    top: -12px;
+    color: #6C3483;
 }
